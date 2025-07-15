@@ -1,10 +1,9 @@
-FROM nginx:alpine
+FROM node:18-alpine
 
-# Copy config nginx
-COPY default.conf /etc/nginx/conf.d/default.conf
+WORKDIR /app
+COPY . .
 
-# Copy mã nguồn vào nginx
-COPY . /usr/share/nginx/html
+RUN npm install
 
 EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["node", "server.js"]
