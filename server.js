@@ -4,7 +4,7 @@ const path = require("path");
 const app = express();
 const PORT = process.env.PORT || 80;
 
-const BASE_URL = "https://yewtu.be/api/v1";
+const BASE_URL = "https://vid.puffyan.us/api/v1";
 
 // Serve web từ thư mục /client
 app.use(express.static(path.join(__dirname, "client")));
