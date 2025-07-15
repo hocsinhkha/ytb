@@ -1,4 +1,5 @@
-const API_URL = "https://invidious.snopyta.org/api/v1"; // có thể đổi sang instance khác
+const CORS_PROXY = "https://corsproxy.io/?";
+const API_URL = CORS_PROXY + "https://yewtu.be/api/v1";
 
 const player = new Plyr('#player', {
   quality: { default: 720 },
@@ -9,21 +10,33 @@ function toggleDark() {
   document.body.classList.toggle("dark");
 }
 
-async function searchVideo() {
-  const query = document.getElementById("searchInput").value;
+async function searchVideo(query) {
   const res = await fetch(`${API_URL}/search?q=${encodeURIComponent(query)}&type=video`);
   const data = await res.json();
+  renderVideos(data);
+}
+
+async function loadPopularVideos() {
+  const res = await fetch(`${API_URL}/popular`);
+  const data = await res.json();
+  renderVideos(data);
+}
+
+function renderVideos(videos) {
   const container = document.getElementById("results");
   container.innerHTML = "";
 
-  data.forEach(item => {
+  videos.forEach(item => {
+    const videoId = item.videoId || item.videoId?.videoId;
+    const title = item.title || "Không tiêu đề";
+
     const el = document.createElement("div");
     el.className = "result-item";
     el.innerHTML = `
-      <img src="https://i.ytimg.com/vi/${item.videoId}/hqdefault.jpg" />
-      <div class="result-title">${item.title}</div>
+      <img src="https://i.ytimg.com/vi/${videoId}/hqdefault.jpg" />
+      <div class="result-title">${title}</div>
     `;
-    el.onclick = () => loadVideo(item.videoId);
+    el.onclick = () => loadVideo(videoId);
     container.appendChild(el);
   });
 }
@@ -50,3 +63,14 @@ async function loadVideo(videoId) {
   document.getElementById("player-container").style.display = "block";
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
+
+// Gọi video thịnh hành khi mở trang
+document.addEventListener("DOMContentLoaded", () => {
+  loadPopularVideos();
+});
+
+// Xử lý tìm kiếm khi bấm nút
+document.querySelector("button[onclick='searchVideo()']").onclick = function () {
+  const query = document.getElementById("searchInput").value;
+  searchVideo(query);
+};
