@@ -5,10 +5,12 @@ body {
   color: #111;
   transition: 0.3s;
 }
+
 body.dark {
   background-color: #111;
-  color: white;
+  color: #fff;
 }
+
 .header {
   padding: 1em;
   display: flex;
@@ -16,10 +18,12 @@ body.dark {
   justify-content: center;
   background-color: #202020;
 }
+
 .header input {
   padding: 8px;
   width: 300px;
 }
+
 .header button {
   padding: 8px 12px;
   background-color: #ff0000;
@@ -27,6 +31,7 @@ body.dark {
   border: none;
   cursor: pointer;
 }
+
 .results {
   display: flex;
   flex-wrap: wrap;
@@ -34,18 +39,22 @@ body.dark {
   gap: 1em;
   padding: 1em;
 }
+
 .result-item {
   width: 300px;
   cursor: pointer;
 }
+
 .result-item img {
   width: 100%;
   border-radius: 10px;
 }
+
 .result-title {
   font-weight: bold;
   margin: 0.5em 0;
 }
+
 .player-container {
   padding: 1em;
   max-width: 800px;
