@@ -1,0 +1,62 @@
+body {
+  margin: 0;
+  font-family: sans-serif;
+  background: #f4f4f4;
+  color: #111;
+  transition: 0.3s;
+}
+
+body.dark {
+  background: #111;
+  color: #fff;
+}
+
+.header {
+  padding: 1em;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  background: #202020;
+}
+
+.header input {
+  padding: 8px;
+  width: 300px;
+}
+
+.header button {
+  padding: 8px 12px;
+  background: #ff0000;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.results {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+  padding: 1em;
+  justify-content: center;
+}
+
+.result-item {
+  width: 300px;
+  cursor: pointer;
+}
+
+.result-item img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.result-title {
+  font-weight: bold;
+  margin: 0.5em 0;
+}
+
+.player-container {
+  padding: 1em;
+  max-width: 800px;
+  margin: auto;
+}
