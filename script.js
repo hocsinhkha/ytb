@@ -1,6 +1,4 @@
-const CORS_PROXY = "https://corsproxy.io/?";
-const API_URL = CORS_PROXY + "https://yewtu.be/api/v1";
-
+const API_URL = "https://api.codetabs.com/v1/proxy/?quest=https://yewtu.be/api/v1";
 const player = new Plyr('#player', {
   quality: { default: 720 },
   speed: { selected: 1, options: [0.5, 1, 1.5, 2] }
