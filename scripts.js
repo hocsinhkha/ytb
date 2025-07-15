@@ -64,13 +64,14 @@ async function loadVideo(videoId) {
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
-// Gọi video thịnh hành khi mở trang
+// Khi trang load
 document.addEventListener("DOMContentLoaded", () => {
   loadPopularVideos();
-});
 
-// Xử lý tìm kiếm khi bấm nút
-document.querySelector("button[onclick='searchVideo()']").onclick = function () {
-  const query = document.getElementById("searchInput").value;
-  searchVideo(query);
-};
+  document.getElementById("searchBtn").onclick = () => {
+    const query = document.getElementById("searchInput").value;
+    if (query.trim()) searchVideo(query);
+  };
+
+  document.getElementById("darkToggle").onclick = toggleDark;
+});
