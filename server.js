@@ -6,10 +6,8 @@ const PORT = process.env.PORT || 80;
 
 const BASE_URL = "https://vid.puffyan.us/api/v1";
 
-// Serve web từ thư mục /client
 app.use(express.static(path.join(__dirname, "client")));
 
-// API: video đề xuất
 app.get("/api/popular", async (req, res) => {
   try {
     const r = await axios.get(`${BASE_URL}/popular`);
@@ -19,7 +17,6 @@ app.get("/api/popular", async (req, res) => {
   }
 });
 
-// API: tìm kiếm
 app.get("/api/search", async (req, res) => {
   try {
     const q = req.query.q;
@@ -30,7 +27,6 @@ app.get("/api/search", async (req, res) => {
   }
 });
 
-// API: chi tiết video
 app.get("/api/video/:id", async (req, res) => {
   try {
     const r = await axios.get(`${BASE_URL}/videos/${req.params.id}`);
